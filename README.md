@@ -1,8 +1,12 @@
 # pi-send.nvim
 
+![pi-send.nvim demo](assets/demo.gif)
+
 Send Neovim context to a [`pi`](https://github.com/earendil-works/pi-coding-agent) coding agent running in a tmux pane.
 
 `pi-send.nvim` turns file locations, cursor positions, and visual selections into short prompts, then pastes them into the matching `pi` pane through tmux buffers. It is meant for a local workflow where Neovim and `pi` share the same tmux server.
+
+Inspired by [`sidekick.nvim`](https://github.com/folke/sidekick.nvim).
 
 ## Recommended pi extension
 
