@@ -23,7 +23,10 @@ function M.send(opts)
     local ok, err = pcall(tmux.send, pane, msg)
     if not ok then
       notify(err, vim.log.levels.ERROR)
+      return
     end
+
+    notify(string.format('Sent message to tmux pane %s:%s', pane.session, pane.window_index))
   end)
 end
 
