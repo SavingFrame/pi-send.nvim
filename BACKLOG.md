@@ -4,8 +4,7 @@ Known production-readiness and refactor work. Do not implement these until the p
 
 ## Plugin API and configuration
 
-- Add a public `setup()` function.
-- Define defaults and user config for tmux target detection, picker behavior, templates, notifications, and send behavior.
+- Expand `setup()` only when a concrete user-facing option is needed. Current config covers `tmux.current_session_only`, `send.append_newline`, and templates.
 - Decide the published module/plugin name. `pi_send.lua` is too local and generic for a published plugin.
 - Decide whether the plugin should define default keymaps, expose mapping helpers, or only document user keymaps.
 
@@ -13,7 +12,7 @@ Known production-readiness and refactor work. Do not implement these until the p
 
 - Add user commands such as `:PiSend`.
 - Decide command variants for `{this}`, `{file}`, `{line}`, `{position}`, and `{selection}`.
-- Improve picker behavior and make picker formatting configurable.
+- Improve picker behavior if a concrete UX problem appears. Keep picker formatting hardcoded for now.
 - Keep the current simple display format unless a new UI design is chosen: `[session:window_index] title`.
 
 ## Tmux integration

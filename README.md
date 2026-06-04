@@ -4,15 +4,52 @@ Local Neovim prototype for sending buffer context to a `pi` agent running in a t
 
 This is a copied prototype from the local Neovim config. It is not production-ready and should not be published yet.
 
+## Setup
+
+```lua
+require('pi_send').setup({
+  tmux = {
+    current_session_only = true,
+  },
+  send = {
+    append_newline = true,
+  },
+  templates = {
+    file = '@{file}',
+    line = '@{file}:L{line}',
+    position = '@{file}:L{line}:C{column}',
+    selection = '{selection}',
+  },
+})
+```
+
+`setup()` is optional. These are the defaults.
+
+Template values can be strings or functions. String templates support:
+
+- `{file}`
+- `{line}`
+- `{column}`
+- `{start_line}`
+- `{start_column}`
+- `{end_line}`
+- `{end_column}`
+- `{selection}`
+- `{location_file}`
+- `{location_line}`
+- `{location_position}`
+
+Function templates receive `(data, ctx)`.
+
 ## Current behavior
 
-- Finds tmux panes in the current tmux session using `tmux list-panes`.
+- Finds tmux panes in the current tmux session by default. Set `tmux.current_session_only = false` to search all sessions.
 - Treats a pane as a `pi` target when the pane process tree contains a `pi` process.
 - If multiple panes match, prompts with `vim.ui.select`.
 - Sends text with tmux buffers:
   - `tmux load-buffer -b <buffer> -`
   - `tmux paste-buffer -b <buffer> -d -r -t <pane_id>`
-- Supports templates:
+- Supports send placeholders:
   - `{this}`
   - `{file}`
   - `{line}`

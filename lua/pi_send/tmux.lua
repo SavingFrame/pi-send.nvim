@@ -1,3 +1,4 @@
+local config = require('pi_send.config')
 local system = require('pi_send.system')
 
 local M = {}
@@ -74,7 +75,8 @@ local function pane_has_pi(pane, tree)
 end
 
 function M.panes()
-  local out = system.run({ 'tmux', 'list-panes', '-s', '-F', tmux_format })
+  local scope = config.get().tmux.current_session_only and '-s' or '-a'
+  local out = system.run({ 'tmux', 'list-panes', scope, '-F', tmux_format })
   local panes = {}
   local tree = process_tree()
 
@@ -103,7 +105,11 @@ end
 
 function M.send(pane, msg)
   local buffer = 'pi-send-' .. pane.id
-  system.run({ 'tmux', 'load-buffer', '-b', buffer, '-' }, { stdin = msg .. '\n' })
+  local stdin = msg
+  if config.get().send.append_newline then
+    stdin = stdin .. '\n'
+  end
+  system.run({ 'tmux', 'load-buffer', '-b', buffer, '-' }, { stdin = stdin })
   system.run({ 'tmux', 'paste-buffer', '-b', buffer, '-d', '-r', '-t', pane.id })
 end
 

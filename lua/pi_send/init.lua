@@ -1,3 +1,4 @@
+local config = require('pi_send.config')
 local notify = require('pi_send.notify').notify
 local picker = require('pi_send.picker')
 local render = require('pi_send.render')
@@ -7,6 +8,7 @@ local M = {}
 
 M.render = render.render
 M.panes = tmux.panes
+M.setup = config.setup
 
 function M.send(opts)
   local msg = M.render(opts)
