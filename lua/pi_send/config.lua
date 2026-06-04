@@ -8,9 +8,9 @@ local defaults = {
     append_newline = true,
   },
   templates = {
-    file = '@{file}',
-    line = '@{file}:L{line}',
-    position = '@{file}:L{line}:C{column}',
+    file = '{location_file}',
+    line = '{location_line}',
+    position = '{location_position}',
     selection = '{selection}',
   },
 }

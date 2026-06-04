@@ -111,9 +111,9 @@ require('pi_send').setup({
   },
   templates = {
     -- Customize how placeholders render.
-    file = '@{file}',
-    line = '@{file}:L{line}',
-    position = '@{file}:L{line}:C{column}',
+    file = '{location_file}',
+    line = '{location_line}',
+    position = '{location_position}',
     selection = '{selection}',
   },
 })
@@ -128,7 +128,7 @@ require('pi_send').setup({
 | `{this}` | Smart context. In a file buffer it renders as `{position}`. In a non-file visual selection it sends `this` followed by the selected text. |
 | `{file}` | Relative file path when the current buffer is a readable file. |
 | `{line}` | Current line location using the configured `line` template. |
-| `{position}` | Current line and column location using the configured `position` template. |
+| `{position}` | Current line and column location using the configured `position` template. Visual ranges are included by default. |
 | `{selection}` | Current visual selection text. |
 | `{location_file}` | Built in file location, formatted as `@path/to/file`. |
 | `{location_line}` | Built in line location, formatted as `@path/to/file:L3`. |
