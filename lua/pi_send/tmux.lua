@@ -74,7 +74,7 @@ local function pane_has_pi(pane, tree)
 end
 
 function M.panes()
-  local out = system.run({ 'tmux', 'list-panes', '-F', tmux_format })
+  local out = system.run({ 'tmux', 'list-panes', '-s', '-F', tmux_format })
   local panes = {}
   local tree = process_tree()
 
