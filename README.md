@@ -6,8 +6,8 @@ This is a copied prototype from the local Neovim config. It is not production-re
 
 ## Current behavior
 
-- Finds tmux panes using `tmux list-panes -a`.
-- Treats a pane as a `pi` target when `pane_current_command == "pi"` or `pane_title` contains `"pi"`.
+- Finds tmux panes in the current tmux session using `tmux list-panes`.
+- Treats a pane as a `pi` target when the pane process tree contains a `pi` process.
 - If multiple panes match, prompts with `vim.ui.select`.
 - Sends text with tmux buffers:
   - `tmux load-buffer -b <buffer> -`

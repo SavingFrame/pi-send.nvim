@@ -18,8 +18,6 @@ Known production-readiness and refactor work. Do not implement these until the p
 
 ## Tmux integration
 
-- Tighten pane detection. Current detection is too loose because it accepts any pane where `pane_title` contains `pi`.
-- Decide reliable matching rules using `pane_current_command`, `pane_title`, explicit pane IDs, or configured sessions/windows.
 - Handle missing tmux, detached sessions, no server running, and command failures cleanly.
 - Preserve Sidekick-style sending through tmux buffers:
   - `tmux load-buffer -b <buffer> -`
