@@ -10,7 +10,9 @@ Inspired by [`sidekick.nvim`](https://github.com/folke/sidekick.nvim).
 
 ## Recommended pi extension
 
-This plugin works best with the included [`auto-title`](extensions/auto-title.ts) pi extension. After the first user message in a session, it generates a short title from the session context and sets the terminal title to `pi|<title>`. If you run multiple `pi` sessions in the same tmux session, those generated titles make it easier to find the right pane or terminal tab.
+There is also [`auto-title`](extensions/auto-title.ts), a small `pi` extension that I use together with this plugin. After the first user message it sets the terminal title to something like `pi|<title>`.
+
+This makes choosing sessions much better. Instead of looking at a list of random tmux panes, I can see what each `pi` session is about and send context to the correct one.
 
 Install it by copying `extensions/auto-title.ts` to `~/.pi/agent/extensions/auto-title.ts`, then restart `pi` or run `/reload`.
 
