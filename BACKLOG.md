@@ -24,8 +24,8 @@ Known production-readiness and refactor work. Do not implement these until the p
 
 ## Context and selection correctness
 
-- Improve visual selection handling for multibyte text. The current implementation is byte-based.
-- Review characterwise, linewise, and blockwise visual selection behavior.
+- Add regression tests for multibyte visual selections. Selection extraction now uses `getregion()` when available.
+- Review characterwise, linewise, and blockwise visual selection behavior against real visual-mode edge cases.
 - Add edge-case handling for unnamed buffers, non-file buffers, help buffers, terminal buffers, and empty selections.
 - Keep current location format: `@file:L3:C1`.
 
