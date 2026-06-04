@@ -4,6 +4,12 @@ Send Neovim context to a [`pi`](https://github.com/earendil-works/pi-coding-agen
 
 `pi-send.nvim` turns file locations, cursor positions, and visual selections into short prompts, then pastes them into the matching `pi` pane through tmux buffers. It is meant for a local workflow where Neovim and `pi` share the same tmux server.
 
+## Recommended pi extension
+
+This plugin works best with the included [`auto-title`](extensions/auto-title.ts) pi extension. After the first user message in a session, it generates a short title from the session context and sets the terminal title to `pi|<title>`. If you run multiple `pi` sessions in the same tmux session, those generated titles make it easier to find the right pane or terminal tab.
+
+Install it by copying `extensions/auto-title.ts` to `~/.pi/agent/extensions/auto-title.ts`, then restart `pi` or run `/reload`.
+
 ## Requirements
 
 - Neovim 0.10 or newer
