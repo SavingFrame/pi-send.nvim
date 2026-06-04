@@ -23,18 +23,6 @@ Known production-readiness and refactor work. Do not implement these until the p
   - `tmux load-buffer -b <buffer> -`
   - `tmux paste-buffer -b <buffer> -d -r -t <pane_id>`
 
-## Architecture
-
-Split the current single-file prototype into focused modules:
-
-- Rendering/template expansion.
-- Context collection.
-- Location formatting.
-- Selection extraction.
-- Tmux pane discovery and sending.
-- Picker/pane selection.
-- Public API.
-
 ## Context and selection correctness
 
 - Improve visual selection handling for multibyte text. The current implementation is byte-based.
